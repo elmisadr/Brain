@@ -1,0 +1,15 @@
+#   Decision Tree
+classifier3 = DecisionTreeClassifier()
+classifier3.fit(X_train, y_train)
+y_pred = classifier3.predict(X_test)
+cm_test = confusion_matrix(y_pred, y_test)
+y_pred_train = classifier3.predict(X_train)
+cm_train = confusion_matrix(y_pred_train, y_train)
+print('Accuracy for training set for Decision Tree = {}'.format((cm_train[0][0] + cm_train[1][1])/len(y_train)))
+print('Accuracy for test set for Decision Tree = {}'.format((cm_test[0][0] + cm_test[1][1])/len(y_test)))
+print(cm_train)
+print(cm_test)
+print(classification_report(y_test,y_pred))
+plot_confusion_matrix(classifier3, X_test, y_test)
+plot_roc_curve(classifier3, X_test, y_test);
+plt.show()
